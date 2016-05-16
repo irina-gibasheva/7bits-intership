@@ -1,0 +1,56 @@
+body {	
+	background: #2e3336;
+}
+
+.header, .section {
+	background: #f0f8fa;
+}
+.col-centred {
+    float: none;
+    margin: 0 auto;
+}
+
+.logo {
+	margin-left: 25px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.btn-container {
+	width: 80%;
+}
+
+.btn-addon {
+	width: 100%;
+}
+
+.input-number {
+	width: 100%;
+}
+
+.form-group button {
+	text-align: left;
+}
+.form-group .container-btn {
+	float: left;
+}
+
+.huck-img {
+	float: left;
+	margin-left: 5px;
+	margin-top: 10px;
+}
+
+.form-item {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 32px;
+}
+
+h2 {
+	color: #fff;
+}
+.content {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}

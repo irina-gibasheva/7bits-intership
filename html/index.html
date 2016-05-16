@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Train task</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <link rel="stylesheet" href="../bootstrap-3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="../js/main.js"></script>
+    <link href="http://7bits.ru/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row header">
+        <a href="http://7bits.ru/" target="_blank">
+          <img src="../img/7bits.png" alt="" class="logo">
+        </a>
+      </div>
+      <div class="row section">
+        <img src="../img/train.png" alt="" class="center-block">
+      </div>
+
+      <div class="row content">
+        <div class="form-group col-centred col-xs-12 col-sm-6 col-md-5 col-lg-4">
+          <button id="create" class="btn btn-info col-centred col-xs-11 col-sm-10 form-item">Create random train</button>
+          <div class="input-group col-xs-11 col-sm-10 container-btn form-item">
+            <span class="input-group-btn btn-container">
+              <button id="create-with-length" class="btn btn-info btn-addon">Create train with length</button>
+            </span>
+            <input id="length" type="number" min="1" max="30" step="1" class="form-control input-number"></input>
+          </div>
+
+          <button id="go" class="btn btn-success col-centred col-xs-11 col-sm-10 form-item">Run my algorithm</button>
+          <img id="go-spinner" class="hidden js-loader-img loader" src="../img/ajax-loader.gif" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <h2 class="text-center col-xs-12">Internship 2016</h2> 
+      </div>
+    </div>
+  </body>
+
+</html>
