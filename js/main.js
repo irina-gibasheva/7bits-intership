@@ -90,3 +90,106 @@ $(function() {
     }, 500);
   })
 });
+
+// Check current wagon state.
+// Returns true if light is turned on, false - otherwise.
+var checkWagonState = function() {
+  var path = key + '/train/state';
+  var answer;
+  $.ajax({
+    type: 'GET',
+    url: apiURL(path),
+    dataType: 'json',
+    async: false,
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function(data) {
+      if (data.success) {
+        answer = data.answer;
+      }
+    },
+    error: server_error_handler
+  })
+  return answer;
+}
+
+// Turns light in current wagon on.
+var turnLightOn = function() {
+  var path = key + '/train/turn-on';
+  $.ajax({
+    type: 'POST',
+    url: apiURL(path),
+    dataType: 'json',
+    async: false,
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function(data){
+      if (data.success == false) {
+        alert(data.message);
+      }
+    },
+    error: server_error_handler
+  })
+}
+
+// Turns light in current wagon off.
+var turnLightOff = function() {
+  var path = key + '/train/turn-off';
+  $.ajax({
+    type: 'POST',
+    url: apiURL(path),
+    dataType: 'json',
+    async: false,
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function(data){
+      if (data.success == false) {
+        alert(data.message);
+      }
+    },
+    error: server_error_handler
+  })
+}
+
+// Go to the next wagon.
+var goNextWagon = function() {
+  var path = key + '/train/next';
+  $.ajax({
+    type: 'POST',
+    url: apiURL(path),
+    dataType: 'json',
+    async: false,
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function(data){
+      if (data.success == false) {
+        alert(data.message);
+      }
+    },
+    error: server_error_handler
+  })
+}
+
+// Go to the previous wagon.
+var goPreviousWagon = function() {
+  var path = key + '/train/previous';
+  $.ajax({
+    type: 'POST',
+    url: apiURL(path),
+    dataType: 'json',
+    async: false,
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function(data){
+      if (data.success == false) {
+        alert(data.message);
+      }
+    },
+    error: server_error_handler
+  })
+}
