@@ -95,7 +95,7 @@ $(function() {
 // Returns true if light is turned on, false - otherwise.
 var checkWagonState = function() {
   var path = key + '/train/state';
-  var answer;
+  var state;
   $.ajax({
     type: 'GET',
     url: apiURL(path),
@@ -106,12 +106,12 @@ var checkWagonState = function() {
     },
     success: function(data) {
       if (data.success) {
-        answer = data.answer;
+        state = data.state;
       }
     },
     error: server_error_handler
   })
-  return answer;
+  return state;
 }
 
 // Turns light in current wagon on.
