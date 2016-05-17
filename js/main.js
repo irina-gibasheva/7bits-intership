@@ -58,8 +58,82 @@ var checkPrediction = function(prediction) {
 }
 
 var algorithm = function() {
-  // Implement me
-  return 42;
+
+  var movesForward = 0;
+  var movesBackward = 0;
+  var duplicationFound = false;
+
+  // Turn light on in the initial wagon.
+  turnLightOn();
+
+  // Check if there is one wagon in the train
+  goPreviousWagon();
+  turnLightOff();
+  goNextWagon();
+  if (!checkWagonState()) {
+    // Return 1, because there is one wagon in the train.
+    return 1;
+  }
+
+  do{
+    movesForward++;
+    // Move forward with the current step for this iteration.
+    for (var i = 0; i < movesForward; i++) {
+      goNextWagon();
+
+      // If it is a wagon before the last wagon on current iteration, check if it was changed when went backward (duplication reached).
+      if (i == (movesForward - 2)) {
+        if (!checkWagonState()) {
+          duplicationFound = true;
+          break;
+        }
+      }
+
+      // If this is the last wagon on current iteration turn light on.
+      if (i == (movesForward - 1)) {
+        turnLightOn();
+      }
+    }
+
+    // If duplication was reached when going forward there is no need to make more steps.
+    if (!duplicationFound) {
+      // Move backward to the initial wagon
+      for (var i = 0; i < movesForward; i++) {
+        goPreviousWagon();
+      }
+
+      movesBackward++;
+      // Move backward with the current step for this iteration.
+      for (var j = 0; j < movesBackward; j++) {
+        goPreviousWagon();
+
+        // If it is a wagon before the last wagon on current iteration, check if it was changed when went forward (duplication reached).
+        if (j == (movesBackward - 2)) {
+          if (checkWagonState()) {
+            duplicationFound = true;
+            break;
+          }
+        }
+
+        // If this is the last wagon on current iteration turn light off.
+        if (j == (movesBackward - 1)) {
+          turnLightOff();
+        }
+      }
+
+      // If duplication was reached when going backward there is no need to return to the initial wagon.
+      if (!duplicationFound) {
+        // Move back to the initial wagon
+        for (var j = 0; j < movesBackward; j++) {
+          goNextWagon();
+        }
+      }
+    }
+
+  } while (!duplicationFound);
+
+  // Deduct 1, because when duplication is detected the step was performed twice (when moved backward and forward).
+  return movesBackward + movesForward - 1;
 }
 
 $(function() {
