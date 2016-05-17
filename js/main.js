@@ -1,4 +1,4 @@
-var key = "insert your key here";
+var key = "va4804";
 
 var server_error_handler = function() {
   console.error('Something went wrong. Please message about the bug in the 7bits company.');
