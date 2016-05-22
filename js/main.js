@@ -82,11 +82,9 @@ var algorithm = function() {
       goNextWagon();
 
       // If it is a wagon before the last wagon on current iteration, check if it was changed when went backward (duplication reached).
-      if (i == (movesForward - 2)) {
-        if (!checkWagonState()) {
-          duplicationFound = true;
-          break;
-        }
+      if (i == (movesForward - 2) && !checkWagonState()) {
+        duplicationFound = true;
+        break;
       }
 
       // If this is the last wagon on current iteration turn light on.
@@ -108,11 +106,9 @@ var algorithm = function() {
         goPreviousWagon();
 
         // If it is a wagon before the last wagon on current iteration, check if it was changed when went forward (duplication reached).
-        if (j == (movesBackward - 2)) {
-          if (checkWagonState()) {
-            duplicationFound = true;
-            break;
-          }
+        if (j == (movesBackward - 2) && checkWagonState()) {
+          duplicationFound = true;
+          break;
         }
 
         // If this is the last wagon on current iteration turn light off.
